@@ -1,48 +1,40 @@
-# Pose2Carton
-A educational project (e.g., using 3D pose to control 3D carton) for learning 3D vision (application of human mesh recovery) or imitation learning
+# Pose2Carton 
 
-# Update Notes 
-2021/06/08: **Update the [requirement](doc/EE228.md) for your code submission on github**
-
-2021/05/20: Update the saving logic of mapping results(.pkl). **In previous version, pkl will not be overwritten, so if you try mapping multiple times, the pkl will stay as it was in previous mapping. This problem is fixed now, pls ensure that your `results/` is the latest version**
-
-2021/05/17: Add quick start [instructions](doc/fbx_from_the_internet.md) to help you dive into this project & Use custom obj loader instead of open3d
-
-# Requirements
-* code only tested on linux system (ubuntu 16.04)
-* open3d==0.11.0(**if you want to try online models, use open3d 0.10.0 along with your own video recording tool to save visualization**)
-* tqdm
-* opencv-python
-
-`pip install -r requirements.txt` (anaconda recommended, python3)
+EE228 课程大作业，利用3D骨架控制3D卡通人物。
 
 
-# Tutorials
-* For maya download & install: [Tutorial1](https://blog.csdn.net/otter1010/article/details/111396928), [Tutorial2](https://knowledge.autodesk.com/zh-hans/support/maya/learn-explore/caas/simplecontent/content/installing-maya-2020-ubuntu.html) [Tutoria3](https://blog.csdn.net/White_Idiot/article/details/78253004)
-* For SMPL, refer to [webpage](https://smpl.is.tue.mpg.de/) or popular implementation [Minimal-IK](https://github.com/CalciferZh/Minimal-IK)
-* For online model matching, refer to [OnlineMatchTutorial](doc/fbx_from_the_internet.md)
+
+# Maya 环境配置
+
+这里请简单描述你配置Maya环境的过程。
 
 
-# Code structure
-* [`transfer.py`](transfer.py): the main mapping file
-* [`vis.py`](vis.py): visualize the mapping sequence of the corresponding mesh
-* [`pose_samples`](pose_samples/): some samples of SMPL model for one frame
-* [`obj_seq_id`](obj_seq_id/): some samples of SMPL model for temporal sequence
+
+# 匹配流程
+
+这里请简单描述你熟悉/使用 匹配代码的流程，可以简述对代码的理解/各个函数作用等。
 
 
-# Method
-![image](img/pipeline.png)
 
-# Project Result
-![image](img/pose2carton.png)
+# 新增脚本说明
 
-# Visulization
-Run vis.py (to get more clear visualization, press ctrl + 1 / ctrl + 2 / ctrl + 3 ...)
+如果你写了自己的脚本来处理数据或进行可视化，请在这里进行相关说明(如何使用等)； 如果没有，请忽略该模块。
 
-![image](img/vis.png)
 
-# LICENSE
-The code is under Apache-2.0 License.
 
-# For EE228 students from SJTU
-Please read course project [requirements](doc/EE228.md). 
+# 项目结果
+
+这里放置来自你最终匹配结果的截图， 如
+
+![image](../img/pose2carton.png)
+
+
+
+
+
+# 协议 
+本项目在 Apache-2.0 协议下开源
+
+所涉及代码及数据的最终解释权归倪冰冰老师课题组所有
+
+Group xx
