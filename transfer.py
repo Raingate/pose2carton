@@ -49,15 +49,15 @@ smpl_joint_names = [
 ]
 
 new_set = [
-    "Hand",
-    "Upleg",
-    "Leg",
-    "HandIndex1",
-    "Foot",
-    "ForeArm",
-    "Arm",
-    "Shoulder",
-    "Toebase", 
+    "hand",
+    "upleg",
+    "leg",
+    "handindex1",
+    "foot",
+    "forearm",
+    "arm",
+    "shoulder",
+    "toebase", 
 ]
 
 def _lazy_get_model_to_smpl(_index2joint): 
@@ -76,8 +76,10 @@ def _lazy_get_model_to_smpl(_index2joint):
         if joint_name.lower().find('thigh') > -1:
             if joint_name.lower().find('l') > -1:
                 smpl_index = lower_smpl_joint_names.index('leftupleg')
-            else:
+                mappings[index] = smpl_index
+            if joint_name.lower().find('r') > -1:
                 smpl_index = lower_smpl_joint_names.index('rightupleg')
+                mappings[index] = smpl_index
                 
         for a_part in new_set:
             if joint_name.lower().find(a_part) > -1:
