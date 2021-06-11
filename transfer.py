@@ -48,6 +48,18 @@ smpl_joint_names = [
     "rightHandIndex1", 
 ]
 
+new_set = [
+    "Hand",
+    "Upleg",
+    "Leg",
+    "HandIndex1",
+    "Foot",
+    "ForeArm",
+    "Arm",
+    "Shoulder",
+    "Toebase", 
+]
+
 def _lazy_get_model_to_smpl(_index2joint): 
     """
     lazy mapper, which maps SMPL joints to character joints directly by their names
@@ -55,10 +67,31 @@ def _lazy_get_model_to_smpl(_index2joint):
     mappings = {}
     lower_smpl_joint_names = [name.lower() for name in smpl_joint_names]
     for index, joint_name in _index2joint.items(): 
-        if joint_name.lower() not in lower_smpl_joint_names: 
-            continue 
-        smpl_index = lower_smpl_joint_names.index(joint_name.lower())
-        mappings[index] = smpl_index 
+        
+        for one_part in lower_smpl_joint_names:
+            if joint_name.lower().find(one_part) > -1:
+                smpl_index = lower_smpl_joint_names.index(one_part.lower())
+                mappings[index] = smpl_index
+                
+        if joint_name.lower().find('thigh') > -1:
+            if joint_name.lower().find('l') > -1:
+                smpl_index = lower_smpl_joint_names.index('leftupleg')
+            else:
+                smpl_index = lower_smpl_joint_names.index('rightupleg')
+                
+        for a_part in new_set:
+            if joint_name.lower().find(a_part) > -1:
+                if joint_name.lower()[0] == 'l':
+                    smpl_index = lower_smpl_joint_names.index('left' + a_part.lower())
+                    mappings[index] = smpl_index 
+                if joint_name.lower()[0] == 'r':
+                    smpl_index = lower_smpl_joint_names.index('right' + a_part.lower())
+                    mappings[index] = smpl_index 
+            
+        if joint_name.lower() in lower_smpl_joint_names:
+            smpl_index = lower_smpl_joint_names.index(joint_name.lower())
+            mappings[index] = smpl_index 
+            
     return mappings
 
 def _get_extra_uv_lines(infofile): 
